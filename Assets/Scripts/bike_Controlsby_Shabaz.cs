@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -39,6 +40,17 @@ public class BikeControlsBA : MonoBehaviour {
 	
 	
 	private void Update () {
+		speedText.text = _rb.velocity.magnitude.ToString ("f0");
+
+		if (healthBar.fillAmount <= 0) {
+				player.GetComponent<Animator> ().SetBool ("yes7", true);
+				Invoke (nameof(ForFail), 2f);
+		
+		}
+	}
+
+	private void FixedUpdate()
+	{
 		if (engineSpeed >= 50f) {
 			engineSpeed = 50f;
 		}
@@ -55,7 +67,6 @@ public class BikeControlsBA : MonoBehaviour {
 			engineSpeed = 15f;
 		}
 		
-		speedText.text = _rb.velocity.magnitude.ToString ("f0");
 		float leftright = Input.GetAxis ("Horizontal");
 		_rb.AddForce (Vector3.back * engineSpeed);
 		if(_left)
@@ -66,12 +77,6 @@ public class BikeControlsBA : MonoBehaviour {
 		if(_right)
 		{
 			_rb.AddForce (Vector3.left* turnSpeed,ForceMode.Acceleration);
-		}
-			
-		if (healthBar.fillAmount <= 0) {
-				player.GetComponent<Animator> ().SetBool ("yes7", true);
-				Invoke (nameof(ForFail), 2f);
-		
 		}
 	}
 

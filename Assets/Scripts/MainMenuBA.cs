@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -13,6 +14,11 @@ public class MainMenuBA : MonoBehaviour {
 	private bool _temp;
 	private bool _once;
 	private bool _menu;
+
+	private void Awake()
+	{
+		Application.targetFrameRate = 60;
+	}
 
 	private void Start () {
 		_temp = true;

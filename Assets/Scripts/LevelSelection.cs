@@ -31,6 +31,22 @@ public class LevelSelection : MonoBehaviour {
 		 
 		_adbool=true;
 		loading.SetActive(false);
+		
+		
+		
+	}
+
+	public void UnlockAllLevels()
+	{
+		PlayerPrefs.SetInt("level1", 1);
+		PlayerPrefs.SetInt("level2", 1);
+		PlayerPrefs.SetInt("level3", 1);
+		PlayerPrefs.SetInt("level4", 1);
+		PlayerPrefs.SetInt("level5", 1);
+		PlayerPrefs.SetInt("level6", 1);
+		PlayerPrefs.SetInt("level7", 1);
+		PlayerPrefs.SetInt("level8", 1);
+		PlayerPrefs.SetInt("level9", 1);
 	}
 	
 	private void Update () {
@@ -64,6 +80,11 @@ public class LevelSelection : MonoBehaviour {
 			l7.SetActive (false);
 		} else {
 			l7.SetActive (true);
+		}
+		if (PlayerPrefs.GetInt ("level7") == 1) {
+			l8.SetActive (false);
+		} else {
+			l8.SetActive (true);
 		}
 		if (PlayerPrefs.GetInt ("level8") == 1) {
 			l9.SetActive (false);

@@ -73,6 +73,16 @@ public class BikeSelection : MonoBehaviour {
 			b = 2;
 			Debug.Log (a + "right of a==0");
 			Debug.Log (b + "right of a==0");
+			
+			if (PlayerPrefs.GetInt("Buy") != 2)
+			{
+				selectT.SetActive (false);
+			}
+			else
+			{
+				coinImageE.SetActive (false);
+			}
+			
 		}
 		else if (a == 1) 
 		{
@@ -80,7 +90,7 @@ public class BikeSelection : MonoBehaviour {
 			yellowW.SetActive (false);
 			redD.SetActive (false);
 			blueE.SetActive (true);
-			redTextT.SetActive (false);
+			redTextT.SetActive (true);
 			selectT.SetActive (true);
 			blueTextT.SetActive (true);
 			buyBtn1N.SetActive (true);
@@ -90,6 +100,15 @@ public class BikeSelection : MonoBehaviour {
 			b = 1;
 			Debug.Log (a + "right of a==1");
 			Debug.Log (b + "right of a==1");
+
+			if (PlayerPrefs.GetInt("Buy1") != 3)
+			{
+				selectT.SetActive(false);
+			}
+			else
+			{
+				coinImageE.SetActive (false);
+			}
 		}
 	}
 	public void Left()
@@ -101,7 +120,7 @@ public class BikeSelection : MonoBehaviour {
 			blueE.SetActive (false);
 			yellowW.SetActive (false);
 			selectT.SetActive (true);
-			redTextT.SetActive (true);
+			redTextT.SetActive (false);
 			blueTextT.SetActive (false);
 			buyBtnN.SetActive (true);
 			buyBtn1N.SetActive (false);
@@ -110,6 +129,15 @@ public class BikeSelection : MonoBehaviour {
 			b = 2;
 			Debug.Log (a + "right of b==1");
 			Debug.Log (b + "right of b==1");
+			
+			if (PlayerPrefs.GetInt("Buy") != 2)
+			{
+				selectT.SetActive (false);
+			}
+			else
+			{
+				coinImageE.SetActive (false);
+			}
 		}
 		else if (b == 2) 
 		{
@@ -140,9 +168,15 @@ public class BikeSelection : MonoBehaviour {
 		totalScoreE.text = "" + PlayerPrefs.GetInt("score");
 	}
 
-	public void BuyBike()
+	public void UnlockAllBikes()
 	{
-		if (PlayerPrefs.GetInt ("score") >= 500) {
+		BuyBike(true);
+		BuyBike1(true);
+	}
+
+	public void BuyBike(bool isForce = false)
+	{
+		if (PlayerPrefs.GetInt ("score") >= 500 || isForce) {
 			selectT.SetActive (true);
 			coinImageE.SetActive (false);
 			PlayerPrefs.SetInt ("score", PlayerPrefs.GetInt ("score") - 500);
@@ -151,9 +185,9 @@ public class BikeSelection : MonoBehaviour {
 		}
 	}
 
-	public void BuyBike1()
+	public void BuyBike1(bool isForce = false)
 	{
-		if (PlayerPrefs.GetInt ("score") >= 1000) 
+		if (PlayerPrefs.GetInt ("score") >= 1000 || isForce)
 		{
 			selectT.SetActive (true);
 			coinImageE.SetActive (false);

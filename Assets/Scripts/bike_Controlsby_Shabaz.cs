@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class BikeControls : MonoBehaviour {
+public class BikeControlsBA : MonoBehaviour {
 	private Rigidbody _rb;
 	private Animator _ani;
-	[SerializeField] private Text speedText;
+	[SerializeField] private TextMeshProUGUI speedText;
 	[FormerlySerializedAs("EngineSpeed")] public float engineSpeed;
 	[SerializeField] private float turnSpeed;
 	[SerializeField] private int speed;
@@ -42,21 +43,19 @@ public class BikeControls : MonoBehaviour {
 			engineSpeed = 50f;
 		}
 		if (speedyY) {
-			speedText.text = engineSpeed.ToString ("f0");
 			engineSpeed += 15f * Time.deltaTime;
 		}
 		if (speedReleaseE) {
-			speedText.text = engineSpeed.ToString ("f0");
 			engineSpeed -= 20f * Time.deltaTime;
 		}
 		if (brakeE) {
-			speedText.text = engineSpeed.ToString ("f0");
 			engineSpeed -= 20f * Time.deltaTime;
 		}
 		if (engineSpeed <= 15f) {
-			speedText.text = engineSpeed.ToString ("f0");
 			engineSpeed = 15f;
 		}
+		
+		speedText.text = _rb.velocity.magnitude.ToString ("f0");
 		float leftright = Input.GetAxis ("Horizontal");
 		_rb.AddForce (Vector3.back * engineSpeed);
 		if(_left)
@@ -71,7 +70,7 @@ public class BikeControls : MonoBehaviour {
 			
 		if (healthBar.fillAmount <= 0) {
 				player.GetComponent<Animator> ().SetBool ("yes7", true);
-				Invoke ("ForFail", 2f);
+				Invoke (nameof(ForFail), 2f);
 		
 		}
 	}

@@ -8,7 +8,7 @@ public class StayTrigger : MonoBehaviour {
 	[SerializeField] private bool hit;
 	
 	private void Update () {
-		if (gotYou && FindObjectOfType<BikeControls> ().legHit) 
+		if (gotYou && FindObjectOfType<BikeControlsBA> ().legHit) 
 		{
 			player.GetComponent<Animator> ().SetBool ("hit3", true);
 			player.GetComponent<EnemyAIBA> ().engineSpeed= 0f;
@@ -17,8 +17,8 @@ public class StayTrigger : MonoBehaviour {
 		if (hit) 
 		{
 			player.GetComponent<Animator> ().SetBool ("hit1",true);
-			FindObjectOfType<BikeControls> ().healthBar.fillAmount = FindObjectOfType<BikeControls> ().healthBar.fillAmount - 0.15f;
-			FindObjectOfType<BikeControls> ().gameObject.GetComponent<Animator> ().SetBool ("yes8", true);
+			FindObjectOfType<BikeControlsBA> ().healthBar.fillAmount = FindObjectOfType<BikeControlsBA> ().healthBar.fillAmount - 0.15f;
+			FindObjectOfType<BikeControlsBA> ().gameObject.GetComponent<Animator> ().SetBool ("yes8", true);
 			hit = false;
 
 		}
@@ -38,7 +38,7 @@ public class StayTrigger : MonoBehaviour {
 		if (other.tag == "Player") {
 			gotYou = false;
 			player.GetComponent<Animator> ().SetBool ("hit1",false);
-			FindObjectOfType<BikeControls> ().gameObject.GetComponent<Animator> ().SetBool ("yes8", false);
+			FindObjectOfType<BikeControlsBA> ().gameObject.GetComponent<Animator> ().SetBool ("yes8", false);
 			hit = false;
 		}
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -8,13 +9,15 @@ public class BikeSelection : MonoBehaviour {
 	[SerializeField] private  GameObject blueE;
 	[SerializeField] private  GameObject redTextT;
 	[SerializeField] private  GameObject blueTextT;
-	[SerializeField] private  Text totalScoreE;
+	[SerializeField] private  TextMeshProUGUI totalScoreE;
 	[SerializeField] private  GameObject buyBtnN;
 	[SerializeField] private  GameObject buyBtn1N;
 	[SerializeField] private  GameObject selectT;
 	[SerializeField] private  GameObject coinImageE;
 	public int a, b;
 	private Animator _ani;
+
+	[SerializeField] private GameObject settings;
 
 	// Use this for initialization
 	private void Awake()
@@ -90,7 +93,7 @@ public class BikeSelection : MonoBehaviour {
 			yellowW.SetActive (false);
 			redD.SetActive (false);
 			blueE.SetActive (true);
-			redTextT.SetActive (true);
+			redTextT.SetActive (false);
 			selectT.SetActive (true);
 			blueTextT.SetActive (true);
 			buyBtn1N.SetActive (true);
@@ -120,7 +123,7 @@ public class BikeSelection : MonoBehaviour {
 			blueE.SetActive (false);
 			yellowW.SetActive (false);
 			selectT.SetActive (true);
-			redTextT.SetActive (false);
+			redTextT.SetActive (true);
 			blueTextT.SetActive (false);
 			buyBtnN.SetActive (true);
 			buyBtn1N.SetActive (false);
@@ -196,6 +199,16 @@ public class BikeSelection : MonoBehaviour {
 			PlayerPrefs.SetInt ("Buy1", 3);
 		}
 
+	}
+
+	public void OpenSettings()
+	{
+		settings.gameObject.SetActive(true);
+	}
+
+	public void CloseSettings()
+	{
+		settings.gameObject.SetActive(false);
 	}
 
 

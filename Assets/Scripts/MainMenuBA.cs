@@ -22,8 +22,6 @@ public class MainMenuBA : MonoBehaviour {
 
 	private void Start ()
 	{
-		PlayerPrefs.SetInt("score", 100000);
-		
 		_temp = true;
 		_once = true;
 		_timer = 3f;

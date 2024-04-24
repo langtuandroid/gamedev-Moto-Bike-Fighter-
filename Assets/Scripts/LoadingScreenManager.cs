@@ -31,7 +31,6 @@ public class LoadingScreenManager : MonoBehaviour
 
         while (!operation.isDone)
         {
-            // Unity loads scenes in the background in range 0.0 to 0.9
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
 
             // Update slider and text

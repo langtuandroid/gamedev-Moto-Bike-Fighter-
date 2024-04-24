@@ -40,7 +40,7 @@ public class BikeControlsBA : MonoBehaviour {
 	
 	
 	private void Update () {
-		speedText.text = _rb.velocity.magnitude.ToString ("f0");
+		speedText.text = (_rb.velocity.magnitude * 1.7f).ToString ("f0") + " Km/h";
 
 		if (healthBar.fillAmount <= 0) {
 				player.GetComponent<Animator> ().SetBool ("yes7", true);

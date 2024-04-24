@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour {
 	{
  		pausePanel.SetActive (false);
 		Time.timeScale = 1f;
+		AudioListener.pause = false;
 
 	}
 

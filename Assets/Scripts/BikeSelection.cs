@@ -74,9 +74,7 @@ public class BikeSelection : MonoBehaviour {
 			coinImageE.SetActive (true);
 			a = 1;
 			b = 2;
-			Debug.Log (a + "right of a==0");
-			Debug.Log (b + "right of a==0");
-			
+
 			if (PlayerPrefs.GetInt("Buy") != 2)
 			{
 				selectT.SetActive (false);
@@ -101,8 +99,6 @@ public class BikeSelection : MonoBehaviour {
 			coinImageE.SetActive (true);
 			a = 2;
 			b = 1;
-			Debug.Log (a + "right of a==1");
-			Debug.Log (b + "right of a==1");
 
 			if (PlayerPrefs.GetInt("Buy1") != 3)
 			{
@@ -130,9 +126,7 @@ public class BikeSelection : MonoBehaviour {
 			coinImageE.SetActive (true);
 			a = 1;
 			b = 2;
-			Debug.Log (a + "right of b==1");
-			Debug.Log (b + "right of b==1");
-			
+
 			if (PlayerPrefs.GetInt("Buy") != 2)
 			{
 				selectT.SetActive (false);
@@ -156,8 +150,6 @@ public class BikeSelection : MonoBehaviour {
 			coinImageE.SetActive (false);
 			b = 0;
 			a = 0;
-			Debug.Log (a + "right of b==2");
-			Debug.Log (b + "right of b==2");
 		}
 	}
 	

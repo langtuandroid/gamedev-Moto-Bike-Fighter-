@@ -20,7 +20,10 @@ public class MainMenuBA : MonoBehaviour {
 		Application.targetFrameRate = 60;
 	}
 
-	private void Start () {
+	private void Start ()
+	{
+		PlayerPrefs.SetInt("score", 100000);
+		
 		_temp = true;
 		_once = true;
 		_timer = 3f;
@@ -68,7 +71,13 @@ public class MainMenuBA : MonoBehaviour {
 
 	public void Play()
 	{
- 		SceneManager.LoadScene (1);
+ 		LoadingScreenManager.instance.LoadScene(2);
+
+	}
+	
+	public void Store()
+	{
+		LoadingScreenManager.instance.LoadScene(1);
 
 	}
 

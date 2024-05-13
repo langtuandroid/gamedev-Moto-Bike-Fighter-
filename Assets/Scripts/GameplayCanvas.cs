@@ -7,6 +7,12 @@ public class GameplayCanvas : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI coinsText;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+    }
+
     private void Update()
     {
         coinsText.text = PlayerPrefs.GetInt("score") + "$";

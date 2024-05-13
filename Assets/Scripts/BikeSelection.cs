@@ -1,7 +1,9 @@
-﻿using TMPro;
+﻿using Integration;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class BikeSelection : MonoBehaviour {
 	[SerializeField] private GameObject yellowW;
@@ -40,7 +42,6 @@ public class BikeSelection : MonoBehaviour {
 		selectT.SetActive (true);
 		coinImageE.SetActive (false);
 		PlayerPrefs.SetInt ("Player", 0);
-		 
 	}
 	
 	// Update is called once per frame
@@ -110,6 +111,18 @@ public class BikeSelection : MonoBehaviour {
 			}
 		}
 	}
+
+	[Inject] private AdMobController _adMobController;
+	[Inject] private DiamondsService _diamondsService;
+
+	public void GetFreeCoins()
+	{
+		_adMobController.ShowRewardedAd((() =>
+		{
+			PlayerPrefs.SetInt ("score", PlayerPrefs.GetInt ("score") + 50);
+		}));
+	}
+	
 	public void Left()
 	{
 		if (b == 1) 
@@ -182,11 +195,11 @@ public class BikeSelection : MonoBehaviour {
 
 	public void BuyBike1(bool isForce = false)
 	{
-		if (PlayerPrefs.GetInt ("score") >= 1000 || isForce)
+		if (PlayerPrefs.GetInt ("Diamond") >= 1000 || isForce)
 		{
 			selectT.SetActive (true);
 			coinImageE.SetActive (false);
-			PlayerPrefs.SetInt ("score", PlayerPrefs.GetInt ("score") - 1000);
+			PlayerPrefs.SetInt ("Diamond", PlayerPrefs.GetInt ("Diamond") - 1000);
 			Debug.Log ("score");
 			PlayerPrefs.SetInt ("Buy1", 3);
 		}

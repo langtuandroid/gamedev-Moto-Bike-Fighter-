@@ -1,13 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Integration;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class LoadingScreenManager : MonoBehaviour
 {
     public static LoadingScreenManager instance;
+
+    [Inject] private AdMobController _adMobController;
     
     [SerializeField] private TextMeshProUGUI text;
 
@@ -21,6 +25,20 @@ public class LoadingScreenManager : MonoBehaviour
 
     public void LoadScene(int index)
     {
+        if (index >= 3)
+        {
+            _adMobController.TryToShowInterstitialAd(out bool showed, (() =>
+            {
+                gameObject.SetActive(true);
+                StartCoroutine(LoadSceneAsynchronously(index));
+            }));
+
+            if (showed)
+            {
+                return;
+            }
+        }
+
         gameObject.SetActive(true);
         StartCoroutine(LoadSceneAsynchronously(index));
     }

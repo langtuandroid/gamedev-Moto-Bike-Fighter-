@@ -106,9 +106,7 @@ public class LevelSelection : MonoBehaviour {
 	
 	public void Level1()
 	{
-		Invoke(nameof(LoadTime),3f);
- 		loading.SetActive (true);
-		 
+		LoadTime();
 	}
 
 	public void LoadTime1()
@@ -118,9 +116,7 @@ public class LevelSelection : MonoBehaviour {
 	
 	public void Level2()
 	{
-		Invoke(nameof(LoadTime1),0f);
- 		loading.SetActive (true);
-		 
+		LoadTime1();
 	}
 
 	public void LoadTime2()
@@ -130,9 +126,7 @@ public class LevelSelection : MonoBehaviour {
 	
 	public void Level3()
 	{
-		Invoke(nameof(LoadTime2),3f);
- 		loading.SetActive (true);
-		 
+		LoadTime2();
 	}
 
 	public void LoadTime3()
@@ -142,9 +136,7 @@ public class LevelSelection : MonoBehaviour {
 	
 	public void Level4()
 	{
-		Invoke(nameof(LoadTime3),3f);
-		loading.SetActive (true);
-		 
+		LoadTime3();
 	}
 
 	public void LoadTime4()
@@ -154,8 +146,7 @@ public class LevelSelection : MonoBehaviour {
 	
 	public void Level5()
 	{
-		Invoke(nameof(LoadTime4),3f);
- 		loading.SetActive (true);
+		LoadTime4();
 	}
 
 	public void LoadTime5()
@@ -165,8 +156,7 @@ public class LevelSelection : MonoBehaviour {
 
 	public void Level6()
 	{
-		Invoke(nameof(LoadTime5),3f);
- 		loading.SetActive (true);
+		LoadTime5();
 	}
 
 	public void LoadTime6()
@@ -176,9 +166,7 @@ public class LevelSelection : MonoBehaviour {
 
 	public void Level7()
 	{
-		Invoke(nameof(LoadTime6),3f);
- 		loading.SetActive (true);
-		 
+		LoadTime6();
 	}
 
 	public void LoadTime7()
@@ -187,9 +175,7 @@ public class LevelSelection : MonoBehaviour {
  	}
 	public void Level8()
 	{
-		Invoke(nameof(LoadTime7),3f);
- 		loading.SetActive (true);
-		 
+		LoadTime7();
 	}
 
 	public void LoadTime8()
@@ -198,8 +184,7 @@ public class LevelSelection : MonoBehaviour {
  	}
 	public void Level9()
 	{
-		Invoke(nameof(LoadTime8),3f);
- 		loading.SetActive (true);
+		LoadTime8();
 	}
 
 	public void LoadTime9()
@@ -209,9 +194,7 @@ public class LevelSelection : MonoBehaviour {
 	
 	public void Level10()
 	{
-		Invoke(nameof(LoadTime9),3f);
- 		loading.SetActive (true);
-		 
+		LoadTime9();
 	}
 
 	public void Back()

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Integration;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using Zenject;
 
 public class GameManager : MonoBehaviour {
 	[SerializeField] private GameObject completeE;
@@ -15,6 +17,8 @@ public class GameManager : MonoBehaviour {
 	public static bool showLoading;
 	private bool _adbool1;
 	private bool _adBool;
+
+	[Inject] private AdMobController _adMobController;
 	
 	private void Awake()
 	{
@@ -109,6 +113,18 @@ public class GameManager : MonoBehaviour {
 	}
 	public void Restart()
 	{
+		_adMobController.TryToShowInterstitialAd(out bool showed, (() =>
+		{
+			Application.LoadLevel (Application.loadedLevel);
+			Time.timeScale = 1f;
+			AudioListener.pause = false;
+		}));
+
+		if (showed)
+		{
+			return;
+		}
+		
 		Application.LoadLevel (Application.loadedLevel);
 		Time.timeScale = 1f;
 		AudioListener.pause = false;
